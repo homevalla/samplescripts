@@ -21,15 +21,15 @@ Password:  $pw
 \n"
 
 cd /home/$1/.ssh
-sudo ssh-keygen -t rsa -b 4096 -N "" -C "$1 user key" -f tour_$1.pem -q
-sudo  puttygen tour_$1.pem -o tour_$1.ppk
+sudo ssh-keygen -t rsa -b 4096 -N "" -C "$1 user key" -f userkey_$1.pem -q
+sudo  puttygen userkey_$1.pem -o userkey_$1.ppk
 #sudo cp -u /etc/ssh/authorized_keys ~/.ssh/
 #sudo cat authorized_keys  > authorized_keys_backup_b4$1
-sudo cp -u tour_$1.pem.pub  authorized_keys
-sudo cp -u tour_$1.pem  ~/.ssh
-echo `pwd`'/'tour_$1.pem
-#sudo mail -s "TourneyGo - Dev " -a tour_$1.pem -a tour_$1.ppk  -r $mailfrom $mailto $2 <<< `echo -e $message`
-echo  -e $message | sudo mail -s "TourneyGo - Dev " -a tour_$1.pem -a tour_$1.ppk  -r $mailfrom $mailto $2 
+sudo cp -u userkey_$1.pem.pub  authorized_keys
+sudo cp -u userkey_$1.pem  ~/.ssh
+echo `pwd`'/'userkey_$1.pem
+#sudo mail -s "xxxxxxxxx - Dev " -a userkey_$1.pem -a userkey_$1.ppk  -r $mailfrom $mailto $2 <<< `echo -e $message`
+echo  -e $message | sudo mail -s "xxxxxxxxx - Dev " -a userkey_$1.pem -a userkey_$1.ppk  -r $mailfrom $mailto $2 
 sudo chown $1:$1 /home/$1/.ssh/*
 sudo chmod 700 -R /home/$1/.ssh
 cd $dirt
